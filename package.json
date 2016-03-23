@@ -1,7 +1,8 @@
 {
   "name": "jsPolyfills",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Standard polyfills that I love to use",
+  "repository": "git://github.com/joycem137/jsPolyfills.git",
   "main": "index.js",
   "author": "Joyce Mayorga",
   "license": "ISC"
