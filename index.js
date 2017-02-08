@@ -31,12 +31,20 @@ Array.prototype.cloneAndAppend = function(iteratorFunction) {
 
 // Polyfill ES6 find function.
 if (Array.prototype.find === undefined) {
-    Array.prototype.find = function(callback, thisArg) {
+    Array.prototype.find = function find(callback, thisArg) {
         for (var i = 0, len=this.length; i<len; i++ ) {
             if (callback.call(thisArg || this, this[i], i, this)) {
                 return this[i];
             }
         }
+    }
+}
+
+// Object improvements!
+if (Object.values === undefined) {
+    Object.values = function values(object) {
+        return Object.keys(object)
+            .map(function(key) { return object[key]; });
     }
 }
 
@@ -46,21 +54,21 @@ if (Array.prototype.find === undefined) {
  * @return {Array}
  */
 if (Array.prototype.clone === undefined) {
-    Array.prototype.clone = function () {
+    Array.prototype.clone = function clone() {
         return this.slice(0, this.length);
     };
 }
 
 // And now onto strings!
 
-String.prototype.startsWith = function(prefix) {
+String.prototype.startsWith = function startsWith(prefix) {
     return this.indexOf(prefix) === 0;
 };
 
-String.prototype.endsWith = function(suffix) {
+String.prototype.endsWith = function endsWith(suffix) {
     return this.match(suffix+"$") == suffix;
 };
 
-String.prototype.capitalize = function(){
+String.prototype.capitalize = function capitalize(){
     return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
 };
