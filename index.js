@@ -2,6 +2,11 @@
  * A variety of extensions to existing JS types.
  */
 
+// Adding flatmap, beacuse I love it.
+Array.prototype.flatMap = function(lambda) {
+    return Array.prototype.concat.apply([], this.map(lambda));
+};
+
 Array.prototype.pluck = function() {
     var args = Array.prototype.slice.call(arguments);
     return this.map(function(item,index) {
